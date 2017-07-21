@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RxAppShortcuts.iml" filepath="$PROJECT_DIR$/RxAppShortcuts.iml" />
+      <module fileurl="file://C:\Users\IVIanuu\AndroidStudioProjects\RxAppShortcuts\sample\app.iml" filepath="C:\Users\IVIanuu\AndroidStudioProjects\RxAppShortcuts\sample\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/rxappshortcuts/rxappshortcuts.iml" filepath="$PROJECT_DIR$/rxappshortcuts/rxappshortcuts.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sample/app.iml" filepath="$PROJECT_DIR$/sample/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
     </modules>
   </component>
 </project>

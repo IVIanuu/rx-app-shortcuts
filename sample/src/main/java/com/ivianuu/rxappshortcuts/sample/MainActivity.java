@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         final ShortcutAdapter shortcutAdapter = new ShortcutAdapter();
         recyclerView.setAdapter(shortcutAdapter);
 
-        RxAppShortcuts.getShortcutsFor(this, "com.google.android.googlequicksearchbox")
+        RxAppShortcuts.getShortcutsFor(this, "com.ivianuu.piecontrols")
                 .subscribe(new Consumer<List<AppShortcut>>() {
                     @Override
                     public void accept(final List<AppShortcut> appShortcuts) throws Exception {

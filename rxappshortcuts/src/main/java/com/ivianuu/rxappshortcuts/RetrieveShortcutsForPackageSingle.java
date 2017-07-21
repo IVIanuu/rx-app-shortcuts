@@ -21,8 +21,8 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.XmlResourceParser;
-import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Single;
@@ -55,17 +55,15 @@ class RetrieveShortcutsForPackageSingle implements SingleOnSubscribe<List<AppSho
 
     @Override
     public void subscribe(SingleEmitter<List<AppShortcut>> e) throws Exception {
-        log("on subscribe");
+        List<AppShortcut> appShortcuts = new ArrayList<>();
+
         PackageInfo packageInfo = context.getPackageManager().getPackageInfo(
                 packageName, PackageManager.GET_ACTIVITIES | PackageManager.GET_META_DATA);
 
         if (packageInfo.activities != null) {
-            log("activities not null");
             // loop trough activity infos
             for (ActivityInfo activityInfo : packageInfo.activities) {
-                log("loop trough activity " + activityInfo.name);
                 if (activityInfo.metaData == null) {
-                    log("meta data is null");
                     // no meta data
                     continue;
                 }
@@ -73,7 +71,6 @@ class RetrieveShortcutsForPackageSingle implements SingleOnSubscribe<List<AppSho
                 XmlResourceParser resourceParser = activityInfo.loadXmlMetaData(context.getPackageManager(), METADATA_KEY);
 
                 if (resourceParser == null) {
-                    log("parser is null");
                     // should not happen
                     continue;
                 }
@@ -83,17 +80,14 @@ class RetrieveShortcutsForPackageSingle implements SingleOnSubscribe<List<AppSho
                         context, resourceParser, activityInfo, packageName);
                 // add the result
                 if (shortcuts != null) {
-                    if (!e.isDisposed()) {
-                        log("notify subsriber");
-                        e.onSuccess(shortcuts);
-                    }
+                    appShortcuts.addAll(shortcuts);
                 }
-
             }
+        }
+
+        if (!e.isDisposed()) {
+            e.onSuccess(appShortcuts);
         }
     }
 
-    private static void log(String message) {
-        Log.d(RetrieveShortcutsForPackageSingle.class.getSimpleName(), message);
-    }
 }
