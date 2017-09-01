@@ -24,7 +24,7 @@ import java.util.List;
 import io.reactivex.Single;
 
 /**
- * @author Manuel Wrage (IVIanuu)
+ * Rx app shortcuts
  */
 public final class RxAppShortcuts {
 
@@ -33,8 +33,9 @@ public final class RxAppShortcuts {
     }
 
     /**
-     * Emits the shortcuts for this app
+     * Returns the shortcuts for the package
      */
+    @NonNull
     public static Single<List<AppShortcut>> getShortcutsFor(@NonNull Context context, @NonNull String packageName) {
         return RetrieveShortcutsForPackageSingle.create(context, packageName);
     }

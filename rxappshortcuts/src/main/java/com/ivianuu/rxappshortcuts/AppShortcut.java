@@ -26,7 +26,7 @@ import java.util.Set;
 /**
  * ShortcutInfo Meta
  */
-public class AppShortcut {
+public final class AppShortcut {
 
     private String packageName;
     private ComponentName activity;
@@ -40,14 +40,14 @@ public class AppShortcut {
     private Intent intent;
     private int rank;
 
-    AppShortcut(String id,
-                String packageName,
-                ComponentName activity,
+    AppShortcut(@NonNull String id,
+                @NonNull String packageName,
+                @NonNull ComponentName activity,
                 boolean enabled,
-                Drawable icon,
-                String shortLabel,
-                String longLabel,
-                String disabledMessage,
+                @NonNull Drawable icon,
+                @NonNull String shortLabel,
+                @NonNull String longLabel,
+                @NonNull String disabledMessage,
                 int rank) {
         this.id = id;
         this.packageName = packageName;
@@ -149,14 +149,14 @@ public class AppShortcut {
     /**
      * Sets the categories
      */
-    void setCategories(Set<String> categories) {
+    void setCategories(@NonNull Set<String> categories) {
         this.categories = categories;
     }
 
     /**
      * Sets the intent
      */
-    void setIntent(Intent intent) {
+    void setIntent(@NonNull Intent intent) {
         this.intent = intent;
     }
 }

@@ -33,7 +33,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Fetches app shortcuts for the passed package
  */
-class RetrieveShortcutsForPackageSingle implements SingleOnSubscribe<List<AppShortcut>> {
+final class RetrieveShortcutsForPackageSingle implements SingleOnSubscribe<List<AppShortcut>> {
 
     private static final String METADATA_KEY = "android.app.shortcuts";
 
