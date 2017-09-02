@@ -17,6 +17,7 @@
 package com.ivianuu.rxappshortcuts;
 
 import android.content.Context;
+import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public final class RxAppShortcuts {
     /**
      * Returns the shortcuts for the package
      */
-    @NonNull
+    @CheckResult @NonNull
     public static Single<List<AppShortcut>> getShortcutsFor(@NonNull Context context, @NonNull String packageName) {
         return RetrieveShortcutsForPackageSingle.create(context, packageName);
     }
