@@ -21,6 +21,8 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.XmlResourceParser;
+import android.support.annotation.CheckResult;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +50,7 @@ final class RetrieveShortcutsForPackageSingle implements SingleOnSubscribe<List<
     /**
      * Returns a single which emits the app shortcuts for the passed package
      */
+    @CheckResult @NonNull
     static Single<List<AppShortcut>> create(Context context, String packageName) {
         return Single.create(new RetrieveShortcutsForPackageSingle(context, packageName))
                 .subscribeOn(Schedulers.computation());
