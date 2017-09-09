@@ -37,12 +37,7 @@ class ShortcutAdapter extends RecyclerView.Adapter<ShortcutAdapter.ShortcutViewH
         holder.shortcutIcon.setImageDrawable(shortcut.getIcon());
         holder.shortcutLabel.setText(shortcut.getShortLabel());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                holder.itemView.getContext().startActivity(shortcut.getIntent());
-            }
-        });
+        holder.itemView.setOnClickListener(view -> holder.itemView.getContext().startActivity(shortcut.getIntent()));
     }
 
     @Override

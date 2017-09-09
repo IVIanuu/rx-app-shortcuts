@@ -30,22 +30,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(shortcutAdapter);
 
         RxAppShortcuts.getShortcutsFor(this, "com.ivianuu.piecontrols")
-                .subscribe(new Consumer<List<AppShortcut>>() {
-                    @Override
-                    public void accept(final List<AppShortcut> appShortcuts) throws Exception {
-                        new Handler(Looper.getMainLooper()).post(new Runnable() {
-                            @Override
-                            public void run() {
-                                // to lazy to include rxandroid dependency :DD
-                                shortcutAdapter.update(appShortcuts);
-                            }
-                        });
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        throwable.printStackTrace();
-                    }
-                });
+                .subscribe(appShortcuts -> new Handler(Looper.getMainLooper()).post(() -> {
+                    // to lazy to include rxandroid dependency :DD
+                    shortcutAdapter.update(appShortcuts);
+                }), Throwable::printStackTrace);
     }
 }

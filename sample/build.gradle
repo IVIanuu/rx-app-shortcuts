@@ -10,11 +10,16 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     // RxAppShortcuts
-    compile project(':rxappshortcuts')
+    implementation project(':rxappshortcuts')
 
     // Android Support
     implementation 'com.android.support:appcompat-v7:26.0.2'
