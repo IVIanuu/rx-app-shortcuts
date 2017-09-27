@@ -24,6 +24,8 @@ import java.util.List;
 
 import io.reactivex.Single;
 
+import static com.ivianuu.preconditions.Preconditions.checkNotNull;
+
 /**
  * Rx app shortcuts
  */
@@ -38,6 +40,8 @@ public final class RxAppShortcuts {
      */
     @CheckResult @NonNull
     public static Single<List<AppShortcut>> getShortcutsFor(@NonNull Context context, @NonNull String packageName) {
+        checkNotNull(context, "context == null");
+        checkNotNull(packageName, "packageName == null");
         return RetrieveShortcutsForPackageSingle.create(context, packageName);
     }
 }
