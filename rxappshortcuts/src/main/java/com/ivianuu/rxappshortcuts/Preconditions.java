@@ -16,32 +16,24 @@
 
 package com.ivianuu.rxappshortcuts;
 
-import android.content.Context;
-import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
-
-import java.util.List;
-
-import io.reactivex.Single;
-
-import static com.ivianuu.rxappshortcuts.Preconditions.checkNotNull;
+import android.support.annotation.Nullable;
 
 /**
- * Rx app shortcuts
+ * Preconditions
  */
-public final class RxAppShortcuts {
+final class Preconditions {
 
-    private RxAppShortcuts() {
+    private Preconditions() {
         // no instances
     }
 
     /**
-     * Returns the shortcuts for the package
+     * Throws a npe if the object is null
      */
-    @CheckResult @NonNull
-    public static Single<List<AppShortcut>> getShortcutsFor(@NonNull Context context, @NonNull String packageName) {
-        checkNotNull(context, "context == null");
-        checkNotNull(packageName, "packageName == null");
-        return RetrieveShortcutsForPackageSingle.create(context, packageName);
+    static void checkNotNull(@Nullable Object o, @NonNull String message) {
+        if (o == null) {
+            throw new NullPointerException(message);
+        }
     }
 }
